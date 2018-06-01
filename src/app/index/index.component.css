@@ -1,0 +1,90 @@
+.example-card {
+
+
+  float: left;
+  margin:10px;
+  display: block; float: left; position: relative;
+  background-color: white;
+  color: white;
+  padding:  0px;
+}
+.body{
+  float: left; width: 100%; overflow: hidden; position: relative;
+  border-style: solid;
+  border-top: none;
+  border-color: #b1b1b1;
+  border-width: 1px;
+  border-bottom-color: white;
+
+}
+@media only screen and (min-width: 1029px){
+  .body{
+    float: left; width: 100%; overflow: hidden; position: relative;
+    width:60%;
+    margin-left:20%;
+    margin-right: 20%;
+
+  }
+  .example-card {
+
+    max-width: 22%;
+    float: left;
+    margin:13px;
+    display: block; float: left; position: relative;
+  }
+}
+@media only screen and (min-width: 399px) and (max-width: 1024px){
+  /*这里写宽度大于321px小于1024px的样式(一般是平板电脑)*/
+  .example-card {
+
+    max-width: 250px;
+    float: left;
+    margin:10px;
+    display: block; float: left; position: relative;
+  }
+}
+
+.example-header-image {
+
+  background-size: cover;
+}
+
+.mat-raised-button{
+  width: 100%;
+}
+.index-title {
+  text-align: left;
+  background-color: white;
+  color: #000;
+}
+
+
+.nav{
+  clear: left; float: left; position: relative; left: 50%;/*整个分页向右边移动宽度的50%*/ text-align: center;
+}
+
+.join_button {
+  background-color: #f5a623;
+  padding: 0px;
+}
+
+/deep/ .mat-card-content {
+    color: black !important;
+}
+/deep/ .mat-card-header {
+  background-color: #e61414 !important;
+}
+/deep/ .mat-card-image {
+  width:100% !important;
+  margin: 0px!important;
+}
+/deep/ .mat-card-actions {
+
+  margin: 0px!important;
+}
+
+/deep/ .mat-card-title {
+  margin-bottom: 16px !important;
+  margin-top: 16px !important;
+}
+

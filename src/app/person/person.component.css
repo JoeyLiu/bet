@@ -1,0 +1,23 @@
+/deep/ .person .mat-tab-header{
+  border-bottom-color: #8B0000;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+
+}
+/deep/ .person .mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar{
+  opacity: 0;
+}
+
+/deep/ .person .mat-tab-labels{
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+}
+/deep/ .person .mat-tab-label-active{
+  background-color: #8B0000 !important;
+  color: white !important;
+}
+
+/deep/ .person .mat-tab-group.mat-primary .mat-tab-label:not(.mat-tab-disabled):focus, .mat-tab-group.mat-primary .mat-tab-link:not(.mat-tab-disabled):focus, .mat-tab-nav-bar.mat-primary .mat-tab-label:not(.mat-tab-disabled):focus, .mat-tab-nav-bar.mat-primary .mat-tab-link:not(.mat-tab-disabled):focus{
+  background-color: #8B0000 !important;
+}
