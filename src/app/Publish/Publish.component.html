@@ -1,0 +1,38 @@
+<h2 mat-dialog-title>发布游戏：</h2>
+<div class="selector">
+<mat-grid-list cols="3" rowHeight="70px">
+  <mat-grid-tile>
+    <mat-form-field>
+      <mat-select placeholder="游戏类型：" [(value)]="selected">
+        <mat-option *ngFor="let game of games" [value]="game.value">
+          {{ game.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </mat-grid-tile>
+  <mat-grid-tile> </mat-grid-tile>
+</mat-grid-list>
+</div>
+<div class="publish" *ngIf="selected === '3D彩' || selected === '11选3' || selected === '抢币'">
+  <p >开奖周期： <br/> </p>
+  <mat-radio-group>
+    <mat-radio-button value="4">4 小时</mat-radio-button>
+    <mat-radio-button value="8">8 小时</mat-radio-button>
+    <mat-radio-button value="12">12 小时</mat-radio-button>
+    <mat-radio-button value="24">24 小时</mat-radio-button>
+  </mat-radio-group>
+</div>
+<div class="publish" *ngIf="selected === '世界杯'">
+  <mat-grid-list cols="3" rowHeight="70px">
+  <mat-grid-tile>
+    <mat-form-field>
+      <mat-select placeholder="选择场次" [(value)]="matchselected">
+        <mat-option *ngFor="let match of matches" [value]="match.value">
+          {{ match.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </mat-grid-tile>
+  </mat-grid-list>
+</div>
+<button mat-raised-button color="primary" (click)="publish()" *ngIf="selected">发布 {{selected}}</button>

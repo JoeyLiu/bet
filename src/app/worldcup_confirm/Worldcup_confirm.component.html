@@ -1,0 +1,21 @@
+<div>
+  <label>比赛场次: 中国 vs. 巴西</label>
+</div>
+<div>
+  <label>主队:中国</label>
+
+</div>
+<div>
+  <label>结果:</label>
+  <mat-radio-group>
+    <mat-radio-button value="1">胜</mat-radio-button>
+    <mat-radio-button value="2">平</mat-radio-button>
+    <mat-radio-button value="3">负</mat-radio-button>
+  </mat-radio-group>
+</div>
+<mat-form-field class="example-full-width">
+  <input matInput placeholder="投注" value="1">
+</mat-form-field>
+<div>
+  <button mat-raised-button color="primary" (click)="onCloseConfirm()">确认</button>
+</div>

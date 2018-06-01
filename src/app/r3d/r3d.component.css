@@ -1,0 +1,16 @@
+.example-container {
+  display: flex;
+  flex-direction: column;
+  max-height: 1000px;
+  min-width: 400px;
+  background-color: lightslategray;
+}
+
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
+}
+/deep/ .cdk-overlay-pane {
+  width: 600px !important;
+}
+

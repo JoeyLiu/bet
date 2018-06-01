@@ -1,0 +1,59 @@
+
+<mat-grid-list cols="3" rowHeight="70px">
+  <mat-grid-tile>
+    <mat-form-field>
+      <mat-select placeholder="选择场次" [(value)]="selected">
+        <mat-option *ngFor="let food of foods" [value]="food.value">
+          {{ food.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </mat-grid-tile>
+  <mat-grid-tile> </mat-grid-tile>
+</mat-grid-list>
+<p *ngIf="selected">比赛时间: {{selected}} <br/> </p>
+<p *ngIf="selected">距停售还有: 2 小时 25 分钟 30 秒</p>
+
+<div class="example-container mat-elevation-z8" *ngIf="selected">
+  <mat-table #table [dataSource]="dataSource">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button mat-raised-button color="primary" (click)="openDialog()">参加</button>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> 发起人 </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="weight">
+      <mat-header-cell *matHeaderCellDef> 参与人数 </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <!--<ng-container matColumnDef="bet">-->
+      <!--<mat-header-cell *matHeaderCellDef></mat-header-cell>-->
+      <!--<mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>-->
+    <!--</ng-container>-->
+
+    <ng-container matColumnDef="symbol">
+    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+    <mat-cell *matCellDef="let element">
+
+    </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>

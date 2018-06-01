@@ -1,0 +1,48 @@
+/deep/ app-nav .mat-tab-label {
+  min-width: 1px !important;
+  font-size: 12px !important;
+  font-weight: bold;
+  max-width: 90px;
+  color: #a7a7a7;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 0px;
+  height: 60px;
+}
+/*/deep/ .mat-tab-labels {*/
+  /*float:right;*/
+/*}*/
+/deep/ .mat-tab-label.mat-tab-disabled {
+
+  color: #a7a7a7;
+  margin-right: auto;
+  margin-left: auto;
+}
+div {
+
+  right: 1px;
+}
+
+/deep/ .mat-tab-header, .mat-tab-nav-bar{
+  border-bottom: none;
+}
+/deep/ .mat-tab-label-active{
+
+  opacity: 1 !important;
+}
+
+/deep/ app-nav .mat-button{
+  background-color: transparent;
+  min-width: 1px !important;
+
+  font-size: 12px !important;
+  color: #ffffff;
+}
+.nav{
+  background-color: #e61414;
+
+}
+mat-tab-group{
+  margin-left: 35% !important;
+  margin-right: 35% !important;
+}
