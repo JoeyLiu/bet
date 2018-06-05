@@ -8,27 +8,24 @@
 
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
-    <ng-container matColumnDef="match">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> 比赛 </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.match}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="bet">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>投注</mat-header-cell>
-      <mat-cell *matCellDef="let element">
-        <p  *ngIf="element.bet === 0">主胜</p>
-        <p  *ngIf="element.bet === 1">主平</p>
-        <p  *ngIf="element.bet === 2">主负</p>
-      </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="result">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>比赛结果</mat-header-cell>
-      <mat-cell *matCellDef="let element">
-        <p  *ngIf="element.result === 0">主胜</p>
-        <p  *ngIf="element.result === 1">主平</p>
-        <p  *ngIf="element.result === 2">主负</p>
-      </mat-cell>
-    </ng-container>
 
+    <!-- Position Column -->
+    <ng-container matColumnDef="result">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>开奖结果</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.result}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>名称</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{element.name}}
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="interval">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>开奖周期(小时)</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{element.interval}}
+      </mat-cell>
+    </ng-container>
     <!-- Name Column -->
     <ng-container matColumnDef="time">
       <mat-header-cell *matHeaderCellDef mat-sort-header> 开奖时间 </mat-header-cell>
@@ -37,22 +34,26 @@
 
     <!-- Weight Column -->
     <ng-container matColumnDef="bonus">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> 总奖金 </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> 奖池 </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.bonus}} </mat-cell>
     </ng-container>
-
+    <ng-container matColumnDef="next">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>下次开奖</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{element.next}}
+      </mat-cell>
+    </ng-container>
     <!-- Symbol Column -->
     <!--<ng-container matColumnDef="bet">-->
     <!--<mat-header-cell *matHeaderCellDef></mat-header-cell>-->
     <!--<mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>-->
     <!--</ng-container>-->
 
-    <ng-container matColumnDef="lucky">
+    <ng-container matColumnDef="stopped">
       <mat-header-cell *matHeaderCellDef></mat-header-cell>
-
       <mat-cell *matCellDef="let element">
-        <p class="lucky" *ngIf="element.bet === element.result">中奖！</p>
-        <p class="unlucky" *ngIf="element.bet !== element.result">未中奖</p>
+        <button mat-raised-button color="warn" *ngIf="element.stopped === false" class="stop">停止</button>
+        <p class="unlucky" *ngIf="element.stopped">已停止</p>
       </mat-cell>
     </ng-container>
 

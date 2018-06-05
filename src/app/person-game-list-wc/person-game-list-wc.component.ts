@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTableDataSource, MatSort} from "@angular/material";
+import { MatTableDataSource, MatSort} from '@angular/material';
 
 @Component({
   selector: 'app-person-game-list-wc',
@@ -8,7 +8,7 @@ import { MatTableDataSource, MatSort} from "@angular/material";
   inputs: ['inputsValue']
 })
 export class PersonGameListWcComponent implements OnInit {
-  displayedColumns = ['match','result','bet', 'time', 'bonus','lucky'];
+  displayedColumns = ['match', 'result', 'bet', 'time', 'bonus', 'lucky'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
@@ -35,8 +35,8 @@ export interface Element {
 }
 
 const ELEMENT_DATA: Element[] = [
-  {match:'中国 vs. 巴西',result: 0, time: '2018-6-15 23:13', bonus: 10079, lucky: false, bet: 0},
-  {match:'中国 vs. 巴西',result: 1, time: '2018-6-15 23:13', bonus: 40026, lucky: false, bet: 0},
+  {match: '中国 vs. 巴西', result: 0, time: '2018-6-15 23:13', bonus: 10079, lucky: false, bet: 0},
+  {match: '德国 vs. 法国',result: 1, time: '2018-6-15 23:13', bonus: 40026, lucky: false, bet: 0},
   {match:'中国 vs. 巴西',result: 2, time: '2018-6-15 23:13', bonus: 6941, lucky: false, bet: 0},
   {match:'中国 vs. 巴西',result: 2, time: '2018-6-15 23:13', bonus: 90122, lucky: true, bet: 0},
   {match:'中国 vs. 巴西',result: 1, time: '2018-6-15 23:13', bonus: 10811, lucky: true, bet: 0},

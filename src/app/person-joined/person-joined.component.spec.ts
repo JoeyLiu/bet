@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Person_navComponent } from './person_nav.component';
+import { PersonJoinedComponent } from './person-joined.component';
 
-describe('Person_navComponent', () => {
-  let component: Person_navComponent;
-  let fixture: ComponentFixture<Person_navComponent>;
+describe('PersonPublishedComponent', () => {
+  let component: PersonJoinedComponent;
+  let fixture: ComponentFixture<PersonJoinedComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ Person_navComponent ]
+      declarations: [ PersonJoinedComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(Person_navComponent);
+    fixture = TestBed.createComponent(PersonJoinedComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

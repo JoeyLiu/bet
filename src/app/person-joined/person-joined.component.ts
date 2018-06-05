@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog} from '@angular/material';
 import {LoginComponent} from '../login/login.component';
-import { PersonComponent} from "../person/person.component";
+import { PersonComponent} from '../person/person.component';
 
 @Component({
-  selector: 'app-person_nav',
-  templateUrl: './person_nav.component.html',
-  styleUrls: ['./person_nav.component.css']
+  selector: 'app-person-joined',
+  templateUrl: './person-joined.component.html',
+  styleUrls: ['./person-joined.component.css']
 })
-export class Person_navComponent implements OnInit {
+export class PersonJoinedComponent implements OnInit {
   dialogResult;
   data;
   constructor(public dialog: MatDialog) { }

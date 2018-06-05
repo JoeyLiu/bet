@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog} from '@angular/material';
 import {LoginComponent} from '../login/login.component';
-import { PersonComponent} from "../person/person.component";
+import { PersonComponent} from '../person/person.component';
 
 @Component({
-  selector: 'app-nav1',
-  templateUrl: './nav1.component.html',
-  styleUrls: ['./nav1.component.css']
+  selector: 'app-person-published',
+  templateUrl: './person-published.component.html',
+  styleUrls: ['./person-published.component.css']
 })
-export class Nav1Component implements OnInit {
+export class PersonPublishedComponent implements OnInit {
   dialogResult;
+  data;
   constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
@@ -26,8 +27,7 @@ export class Nav1Component implements OnInit {
   }
   openPerson() {
     const dialogRef = this.dialog.open(PersonComponent, {
-      width: '60%',
-      height: '50%',
+      width: '300px',
       data: 'This text is passed into the dialog!'
     });
     dialogRef.afterClosed().subscribe(result => {

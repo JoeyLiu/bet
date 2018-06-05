@@ -11,7 +11,7 @@
 /deep/ .person .mat-tab-labels{
   margin-left: auto;
   margin-right: auto;
-  width: 90%;
+  width: 60%;
 }
 /deep/ .person .mat-tab-label-active{
   background-color: #8B0000 !important;
@@ -21,3 +21,5 @@
 /deep/ .person .mat-tab-group.mat-primary .mat-tab-label:not(.mat-tab-disabled):focus, .mat-tab-group.mat-primary .mat-tab-link:not(.mat-tab-disabled):focus, .mat-tab-nav-bar.mat-primary .mat-tab-label:not(.mat-tab-disabled):focus, .mat-tab-nav-bar.mat-primary .mat-tab-link:not(.mat-tab-disabled):focus{
   background-color: #8B0000 !important;
 }
+
+

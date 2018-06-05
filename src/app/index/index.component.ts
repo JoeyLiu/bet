@@ -17,7 +17,7 @@ export class IndexComponent implements OnInit {
   }
   openDialog_worldcup() {
     const dialogRef = this.dialog.open(WorldcupComponent, {
-      width: '300px',
+      width: '600px',
       data: 'This text is passed into the dialog!'
     });
     dialogRef.afterClosed().subscribe(result => {
@@ -27,7 +27,7 @@ export class IndexComponent implements OnInit {
   }
   openDialog_3d() {
     const dialogRef = this.dialog.open(R3dComponent, {
-      width: '300px',
+      width: '600px',
       data: 'This text is passed into the dialog!'
     });
     dialogRef.afterClosed().subscribe(result => {
@@ -37,7 +37,7 @@ export class IndexComponent implements OnInit {
   }
   openDialog_113() {
     const dialogRef = this.dialog.open(R113Component, {
-      width: '300px',
+      width: '600px',
       data: 'This text is passed into the dialog!'
     });
     dialogRef.afterClosed().subscribe(result => {

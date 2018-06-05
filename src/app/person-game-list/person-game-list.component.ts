@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {MatSort, MatTableDataSource} from '@angular/material';
 
 @Component({
   selector: 'app-person-game-list',
@@ -7,14 +8,22 @@ import { Component, OnInit } from '@angular/core';
   inputs: ['inputsValue']
 })
 export class PersonGameListComponent implements OnInit {
-  displayedColumns = ['result', 'bet', 'time', 'bonus','lucky'];
-  dataSource = ELEMENT_DATA;
+  displayedColumns = ['result', 'bet', 'time', 'bonus', 'lucky'];
+  dataSource = new MatTableDataSource(ELEMENT_DATA);
   private inputsValue;
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+    this.dataSource.filter = filterValue;
+  }
+  @ViewChild(MatSort) sort: MatSort;
   constructor() { }
 
   ngOnInit() {
   }
-
+  ngAfterViewInit() {
+    this.dataSource.sort = this.sort;
+  }
 }
 export interface Element {
   time: string;

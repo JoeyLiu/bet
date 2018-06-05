@@ -9,6 +9,4 @@
   overflow: auto;
   max-height: 500px;
 }
-/deep/ .cdk-overlay-pane {
-  width: 600px !important;
-}
+

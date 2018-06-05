@@ -32,13 +32,9 @@
   margin-right: 20%;
   width:60%;
 }
-::ng-deep .mat-sort-header-arrow.ng-trigger.ng-trigger-arrowPosition {
-  opacity: 0;
-}
 
-::ng-deep .mat-sort-header-pointer-left.ng-trigger.ng-trigger-leftPointer{
-  transform: rotate(-45deg);
-}
-::ng-deep .mat-sort-header-pointer-right.ng-trigger.ng-trigger-rightPointer{
-  transform: rotate(45deg);
+.stop{
+  margin-left: 10%;
+  margin-right: 10%;
+  width: 80%;
 }
