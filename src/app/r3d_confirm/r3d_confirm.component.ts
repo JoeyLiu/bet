@@ -9,6 +9,7 @@ import {MatDialogRef} from '@angular/material';
   styleUrls: ['./r3d_confirm.component.css']
 })
 export class R3d_confirmComponent implements OnInit {
+
   numbers = [
     {value: '1', viewValue: '1'},
     {value: '2', viewValue: '2'},
@@ -21,13 +22,20 @@ export class R3d_confirmComponent implements OnInit {
     {value: '9', viewValue: '3'},
 
   ];
-
-  constructor(public thisDialogRef: MatDialogRef<R3d_confirmComponent>, @Inject(MAT_DIALOG_DATA) public data: string) { }
+  selected1: any;
+  selected2: any;
+  selected3: any;
+  constructor(public thisDialogRef: MatDialogRef<R3d_confirmComponent>, @Inject(MAT_DIALOG_DATA) public data: string) {
+  }
   hide = true;
+  checked: boolean;
   ngOnInit() {
 
   }
   onCloseConfirm() {
     this.thisDialogRef.close('Confirm');
+  }
+  Cancel() {
+    this.thisDialogRef.close('Cancel');
   }
 }

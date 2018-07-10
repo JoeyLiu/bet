@@ -37,6 +37,10 @@
       <mat-header-cell *matHeaderCellDef mat-sort-header> 奖池 </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.bonus}} </mat-cell>
     </ng-container>
+    <ng-container matColumnDef="mybonus">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> 我的奖金 </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.mybonus}} </mat-cell>
+    </ng-container>
     <ng-container matColumnDef="next">
       <mat-header-cell *matHeaderCellDef mat-sort-header>下次开奖</mat-header-cell>
       <mat-cell *matCellDef="let element">
@@ -50,10 +54,10 @@
     <!--</ng-container>-->
 
     <ng-container matColumnDef="stopped">
-      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-header-cell *matHeaderCellDef>操作</mat-header-cell>
       <mat-cell *matCellDef="let element">
-        <button mat-raised-button color="warn" *ngIf="element.stopped === false" class="stop">停止</button>
-        <p class="unlucky" *ngIf="element.stopped">已停止</p>
+        <button mat-raised-button color="warn" *ngIf="element.stopped === false" class="stop">暂停</button>
+        <button mat-raised-button color="primary" *ngIf="element.stopped" class="stop">继续</button>
       </mat-cell>
     </ng-container>
 

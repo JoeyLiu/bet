@@ -3,9 +3,10 @@
 
   float: left;
   margin:10px;
-  display: block; float: left; position: relative; right: 50%;
-  background-color: #e61414;
+  display: block; float: left; position: relative;
+  background-color: white;
   color: white;
+  padding:  0px;
 }
 .body{
   float: left; width: 100%; overflow: hidden; position: relative;
@@ -18,27 +19,28 @@
 @media only screen and (min-width: 1029px){
   .body{
     float: left; width: 100%; overflow: hidden; position: relative;
-    width:60%;
-    margin-left:20%;
-    margin-right: 20%;
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
 
   }
   .example-card {
 
-    max-width: 9%;
+    max-width: 170px;
     float: left;
     margin:10px;
-    display: block; float: left; position: relative; right: 50%;
+    display: block; float: left; position: relative;
   }
+
 }
 @media only screen and (min-width: 399px) and (max-width: 1024px){
   /*这里写宽度大于321px小于1024px的样式(一般是平板电脑)*/
   .example-card {
 
-    max-width: 250px;
+    max-width: 150px;
     float: left;
     margin:10px;
-    display: block; float: left; position: relative; right: 50%;
+    display: block; float: left; position: relative;
   }
 }
 
@@ -51,9 +53,10 @@
   width: 100%;
 }
 
-.nav{
-  clear: left; float: left; position: relative; left: 50%;/*整个分页向右边移动宽度的50%*/ text-align: center;
-}
+/*.nav{*/
+  /*clear: left; float: left; position: relative; left: 50%;!*整个分页向右边移动宽度的50%*! text-align: center;*/
+/*}*/
+
 /deep/ .mat-raised-button.mat-primary[disabled], .mat-raised-button.mat-warn[disabled], .mat-raised-button[disabled][disabled] {
   color: #a7a7a7;
 }

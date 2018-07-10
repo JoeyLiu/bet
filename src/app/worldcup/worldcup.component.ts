@@ -2,7 +2,9 @@ import { Component, OnInit, Inject, ViewChild} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog} from '@angular/material';
 import {MatDialogRef} from '@angular/material';
 import {Worldcup_confirmComponent} from "../worldcup_confirm/worldcup_confirm.component";
-
+import {GameService} from '../game.service';
+import {UserService} from '../user.service';
+declare var $: any;
 
 @Component({
   selector: 'app-worldcup',
@@ -10,57 +12,78 @@ import {Worldcup_confirmComponent} from "../worldcup_confirm/worldcup_confirm.co
   styleUrls: ['./worldcup.component.css']
 })
 export class WorldcupComponent implements OnInit {
-  displayedColumns = ['position', 'name', 'weight','symbol'];
-  dataSource = ELEMENT_DATA;
-  foods = [
-    {value: '2018-6-15 23:00', viewValue: '中国 vs. 巴西'},
-    {value: '2018-6-15 23:00', viewValue: '法国 vs. 德国'},
-    {value: '2018-6-15 23:00', viewValue: '英格兰  vs. 意大利'}
-  ];
+  displayedColumns = ['position', 'gameID', 'name', 'weight', 'pool'];
+  games: any;
+  matches: any;
+  selected: any;
+  username: any;
 
 
-  constructor(public thisDialogRef: MatDialogRef<Worldcup_confirmComponent>, @Inject(MAT_DIALOG_DATA) public data: string, public dialog: MatDialog) { }
+  constructor(public thisDialogRef: MatDialogRef<Worldcup_confirmComponent>,
+              private gameSvc: GameService,
+              private userSvc: UserService,
+              @Inject(MAT_DIALOG_DATA) public data: string,
+              public dialog: MatDialog) { }
   hide = true;
   ngOnInit() {
-
+    this.matches = this.gameSvc.getGameList();
+    this.games = this.userSvc.getAllGameList();
+    this.getUsername();
   }
-  openDialog() {
+  getUsername() {
+    // http://47.95.116.38:9998/user?userAddr=0x9e3b54263a4Aac9cac25E282191775fb28ab0aB8
+    for ( var i = 0; i < this.games.length; i++) {
+      let userAddr = this.games[i][0];
+      console.log(userAddr);
+      $.ajax({
+        url: this.userSvc.getApiUrl() + '/user?userAddr=' + userAddr,
+        usrSvc: this.userSvc,
+        game: this.games[i],
+        instance: this,
+        dataType: 'json',
+        method: 'GET',
+        success: function(data) {
+          if (data.status === '200') {
+            console.log('获取用户名：' + data.username);
+            this.game.push(data.username);
+
+          } else {
+            console.log(data);
+            return 0;
+          }
+        },
+        error: function(xhr) {
+          alert('error:' + JSON.stringify(xhr)); }
+      });
+    }
+  }
+  bet(gameID: any) {
+    console.log(gameID);
+    let game: any;
+    for ( var i = 0; i < this.games.length; i++) {
+      if (this.games[i][10] === gameID ) {
+        game = this.games[i];
+      }
+    }
+    const clientWidth = document.body.clientWidth;
+    var width;
+    if (clientWidth > 1024) {
+      width = '450px';
+    } else {
+      width = '400px';
+    }
     const dialogRef = this.dialog.open(Worldcup_confirmComponent, {
-      width: '300px',
-      data: 'This text is passed into the dialog!'
+      width: width,
+      data: game,
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog closed: ${result}`);
+      if (result === 'bet') {
+        this.thisDialogRef.close();
+      }
+
       // this.dialogResult = result;
     });
   }
 }
-export interface Element {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
 
-const ELEMENT_DATA: Element[] = [
-  {position: 1, name: 'Hydrogen', weight: 10079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 40026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 90122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 120107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 140067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 159994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 189984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 201797, symbol: 'Ne'},
-  {position: 11, name: 'Sodium', weight: 229897, symbol: 'Na'},
-  {position: 12, name: 'Magnesium', weight: 24305, symbol: 'Mg'},
-  {position: 13, name: 'Aluminum', weight: 269815, symbol: 'Al'},
-  {position: 14, name: 'Silicon', weight: 280855, symbol: 'Si'},
-  {position: 15, name: 'Phosphorus', weight: 309738, symbol: 'P'},
-  {position: 16, name: 'Sulfur', weight: 32065, symbol: 'S'},
-  {position: 17, name: 'Chlorine', weight: 35453, symbol: 'Cl'},
-  {position: 18, name: 'Argon', weight: 39948, symbol: 'Ar'},
-  {position: 19, name: 'Potassium', weight: 390983, symbol: 'K'},
-  {position: 20, name: 'Calcium', weight: 40078, symbol: 'Ca'},
-];

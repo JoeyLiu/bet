@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { R113_confirmComponent } from './r113_confirm.component';
 
-describe('R113_confirmComponent', () => {
+describe('GameDrawConfirmComponent', () => {
   let component: R113_confirmComponent;
   let fixture: ComponentFixture<R113_confirmComponent>;
 

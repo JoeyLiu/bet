@@ -1,10 +1,16 @@
 .lucky{
-  background-color: #8B0000;
+  background-color: #e61414;
   color: white;
   text-align: center;
   border-radius: 3px;
 }
 .unlucky{
+  background-color: #acacac;
+  color: white;
+  text-align: center;
+  border-radius: 3px;
+}
+.inprogress{
   background-color: #1a8b3d;
   color: white;
   text-align: center;

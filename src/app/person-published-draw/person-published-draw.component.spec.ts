@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PersonGamePublishedComponent } from './person-game-published.component';
+import { PersonPublishedDrawComponent } from './person-published-draw.component';
 
 describe('PersonGameListDrawComponent', () => {
-  let component: PersonGamePublishedComponent;
-  let fixture: ComponentFixture<PersonGamePublishedComponent>;
+  let component: PersonPublishedDrawComponent;
+  let fixture: ComponentFixture<PersonPublishedDrawComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PersonGamePublishedComponent ]
+      declarations: [ PersonPublishedDrawComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PersonGamePublishedComponent);
+    fixture = TestBed.createComponent(PersonPublishedDrawComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

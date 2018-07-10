@@ -12,21 +12,22 @@
 /*/deep/ .mat-tab-labels {*/
   /*float:right;*/
 /*}*/
-/deep/ .mat-tab-label.mat-tab-disabled {
+/deep/ app-nav .mat-tab-label.mat-tab-disabled {
 
   color: #a7a7a7;
   margin-right: auto;
   margin-left: auto;
 }
-div {
+app-nav div {
 
   right: 1px;
 }
 
-/deep/ .mat-tab-header, .mat-tab-nav-bar{
+/deep/ app-nav .mat-tab-header, .mat-tab-nav-bar{
   border-bottom: none;
+  background-color: #e61414;
 }
-/deep/ .mat-tab-label-active{
+/deep/ app-nav .mat-tab-label-active{
 
   opacity: 1 !important;
 }
@@ -38,11 +39,20 @@ div {
   font-size: 12px !important;
   color: #ffffff;
 }
-.nav{
+app-nav .nav{
   background-color: #e61414;
 
 }
-mat-tab-group{
-  margin-left: 35% !important;
-  margin-right: 35% !important;
+
+@media only screen and (min-width: 451px){
+  /deep/ app-nav .mat-tab-label-container {
+    margin-left: 35% !important;
+    margin-right: 35% !important;
+  }
+}
+@media only screen and (max-width: 450px){
+  mat-tab-group{
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+  }
 }

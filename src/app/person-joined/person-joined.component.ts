@@ -11,9 +11,11 @@ import { PersonComponent} from '../person/person.component';
 export class PersonJoinedComponent implements OnInit {
   dialogResult;
   data;
+  enabled: boolean;
   constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
+    this.enabled = false;
   }
   openDialog() {
     const dialogRef = this.dialog.open(LoginComponent, {

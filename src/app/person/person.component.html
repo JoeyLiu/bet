@@ -1,13 +1,20 @@
-<div class="person">
-<mat-tab-group>
-  <mat-tab label="个人资料">
 
-  </mat-tab>
-  <mat-tab label="我参与的">
-    <app-person-joined></app-person-joined>
-  </mat-tab>
-  <mat-tab label="我发起的">
-    <app-person-published></app-person-published>
-  </mat-tab>
-</mat-tab-group>
+
+
+<div class="person">
+
+<!--<mat-tab-group>-->
+  <!--<mat-tab label="个人资料">-->
+
+  <!--</mat-tab>-->
+  <!--<mat-tab label="我参与的">-->
+    <!---->
+  <!--</mat-tab>-->
+  <!--<mat-tab label="我发起的">-->
+    <!---->
+  <!--</mat-tab>-->
+<!--</mat-tab-group>-->
+  <app-person-profile *ngIf="option === 0"></app-person-profile>
+  <app-person-joined *ngIf="option === 1"></app-person-joined>
+  <app-person-published *ngIf="option === 2"></app-person-published>
 </div>

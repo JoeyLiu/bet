@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { CookieModule } from 'ngx-cookie';
 import {
   MatRadioModule,
   MatButtonModule,
@@ -16,7 +17,7 @@ import {
   MatSelectModule,
   MatGridListModule,
   MatButtonToggleModule,
-  MatSortModule,
+  MatSortModule, MatSnackBarModule, MatListModule,
 
 
 } from '@angular/material';
@@ -48,8 +49,24 @@ import { PersonGameListComponent } from './person-game-list/person-game-list.com
 import {PersonGameListWcComponent} from './person-game-list-wc/person-game-list-wc.component';
 import {PersonGameListDrawComponent} from './person-game-list-draw/person-game-list-draw.component';
 import {PersonPublishedComponent} from './person-published/person-published.component';
-import {PersonGamePublishedComponent} from './person-game-published/person-game-published.component';
-
+import {PersonPublishedRandomComponent} from './person-published-random/person-published-random.component';
+import {PersonPublishedDrawComponent} from './person-published-draw/person-published-draw.component';
+import {PersonPublishedWcComponent} from './person-published-wc/person-published-wc.component';
+import { PersonProfileComponent } from './person-profile/person-profile.component';
+import {RegisterComponent} from './register/register.component';
+import {GameDrawComponent} from './game-draw/game-draw.component';
+import {GameDrawConfirmComponent} from './game-draw-confirm/game-draw-confirm.component';
+import {HttpClientJsonpModule, HttpClientModule} from '@angular/common/http';
+import {UserService} from './user.service';
+import {TransferComponent} from './transfer/transfer.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { SpinnerComponent } from './spinner/spinner.component';
+import { BlockchainComponent } from './blockchain/blockchain.component';
+import {GameService} from './game.service';
+import { LoadingComponent } from './loading/loading.component';
+import {PublishListComponent} from './PublishList/PublishList.component';
+import {Worldcup_setresultComponent} from './worldcup_setresult/worldcup_setresult.component';
+import {HelpComponent} from './Help/Help.component';
 
 @NgModule({
   declarations: [
@@ -72,13 +89,25 @@ import {PersonGamePublishedComponent} from './person-game-published/person-game-
     PersonComponent,
     PersonJoinedComponent,
     PersonPublishedComponent,
+    PersonPublishedDrawComponent,
     PersonGameListComponent,
     PersonGameListWcComponent,
     PersonGameListDrawComponent,
-    PersonGamePublishedComponent,
+    PersonPublishedRandomComponent,
+    PersonPublishedWcComponent,
+    PersonProfileComponent,
+    RegisterComponent,
+    GameDrawComponent,
+    GameDrawConfirmComponent,
+    TransferComponent,
+    SpinnerComponent,
+    BlockchainComponent,
+    LoadingComponent,
+    PublishListComponent,
+    Worldcup_setresultComponent,
+    HelpComponent,
   ],
   imports: [
-    KSSwiperModule,
     BrowserModule,
     MatButtonModule,
     MatButtonToggleModule,
@@ -99,10 +128,17 @@ import {PersonGamePublishedComponent} from './person-game-published/person-game-
     BrowserAnimationsModule,
     MatDividerModule,
     MatTableModule,
-
-
+    HttpClientModule,
+    HttpClientJsonpModule,
+    MatProgressSpinnerModule,
+    MatSnackBarModule,
+    MatListModule,
+    CookieModule.forRoot(),
   ],
-  providers: [],
+  providers: [
+    UserService,
+    GameService,
+  ],
   entryComponents: [
     LoginComponent,
     WorldcupComponent,
@@ -114,6 +150,13 @@ import {PersonGamePublishedComponent} from './person-game-published/person-game-
     PublishComponent,
     ChargeComponent,
     PersonComponent,
+    RegisterComponent,
+    GameDrawComponent,
+    GameDrawConfirmComponent,
+    TransferComponent,
+    LoadingComponent,
+    Worldcup_setresultComponent,
+    HelpComponent,
   ],
   bootstrap: [AppComponent]
 })

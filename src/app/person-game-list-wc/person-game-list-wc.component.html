@@ -1,62 +1,52 @@
-<div class="example-container mat-elevation-z8 game-list" >
-  <div class="game_filter">
-    <mat-form-field>
-      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="">
-    </mat-form-field>
+  <!--<div class="game_filter">-->
+    <!--<mat-form-field>-->
+      <!--<input matInput (keyup)="applyFilter($event.target.value)" placeholder="">-->
+    <!--</mat-form-field>-->
+  <!--</div>-->
+  <div class="wc_game_list" >
+    <div *ngFor="let game of games" class="game_card">
+      <mat-card class="example-card">
+        <mat-card-header>
+
+          <mat-card-title>
+            <div class="title icon"><mat-icon>tv</mat-icon></div>
+            <div class="title txt">{{game[6]}} vs. {{game[7]}}</div>
+          </mat-card-title>
+          <mat-card-subtitle></mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-list role="list" >
+            <mat-list-item role="listitem" class="list">
+              <div class="left">总奖池</div>
+              <div class="right">{{game[9] / 100000000}}</div>
+            </mat-list-item>
+            <mat-list-item role="listitem" class="list">
+              <div class="left">我的投注</div>
+              <div class="right">{{game[10] / 100000000}}</div>
+            </mat-list-item>
+
+            <mat-list-item role="listitem" class="list">
+              <div class="left">开奖结果</div>
+              <div class="right" *ngIf="game[8] === '0'">主胜</div>
+              <div class="right" *ngIf="game[8] === '1'">主平</div>
+              <div class="right" *ngIf="game[8] === '2'">主负</div>
+              <div class="right" *ngIf="game[8] === '3'">未开奖</div>
+            </mat-list-item>
+            <mat-list-item role="listitem" class="list">
+              <div class="left">奖金</div>
+              <div class="right" *ngIf="game[8] === '3'">--</div>
+              <div class="right" *ngIf="game[8] != '3'">{{game[11]}}</div>
+            </mat-list-item>
+
+          </mat-list>
+
+        </mat-card-content>
+        <mat-card-actions >
+          <!--<button mat-button (click)="add_to_cart(product.id)" class="increase-btn">+</button>-->
+          <!--<input matInput value="{{product.quantity}}" class="product-quantity" disabled>-->
+          <!--<button mat-button (click)="bet(selected)" class="bet-btn" color="warn" *ngIf="game[1] === '0'">开奖</button>-->
+        </mat-card-actions>
+      </mat-card>
+
+    </div>
   </div>
-  <mat-table #table [dataSource]="dataSource" matSort>
-
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
-    <ng-container matColumnDef="match">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> 比赛 </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.match}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="bet">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>投注</mat-header-cell>
-      <mat-cell *matCellDef="let element">
-        <p  *ngIf="element.bet === 0">主胜</p>
-        <p  *ngIf="element.bet === 1">主平</p>
-        <p  *ngIf="element.bet === 2">主负</p>
-      </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="result">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>比赛结果</mat-header-cell>
-      <mat-cell *matCellDef="let element">
-        <p  *ngIf="element.result === 0">主胜</p>
-        <p  *ngIf="element.result === 1">主平</p>
-        <p  *ngIf="element.result === 2">主负</p>
-      </mat-cell>
-    </ng-container>
-
-    <!-- Name Column -->
-    <ng-container matColumnDef="time">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> 开奖时间 </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.time}} </mat-cell>
-    </ng-container>
-
-    <!-- Weight Column -->
-    <ng-container matColumnDef="bonus">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> 总奖金 </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.bonus}} </mat-cell>
-    </ng-container>
-
-    <!-- Symbol Column -->
-    <!--<ng-container matColumnDef="bet">-->
-    <!--<mat-header-cell *matHeaderCellDef></mat-header-cell>-->
-    <!--<mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>-->
-    <!--</ng-container>-->
-
-    <ng-container matColumnDef="lucky">
-      <mat-header-cell *matHeaderCellDef></mat-header-cell>
-
-      <mat-cell *matCellDef="let element">
-        <p class="lucky" *ngIf="element.bet === element.result">中奖！</p>
-        <p class="unlucky" *ngIf="element.bet !== element.result">未中奖</p>
-      </mat-cell>
-    </ng-container>
-
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-  </mat-table>
-</div>

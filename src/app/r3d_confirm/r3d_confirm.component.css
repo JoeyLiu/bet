@@ -9,10 +9,13 @@
   overflow: auto;
   max-height: 500px;
 }
-/deep/ .cdk-overlay-pane {
-  width: 600px !important;
-}
+/*/deep/ .cdk-overlay-pane {*/
+  /*width: 600px !important;*/
+/*}*/
 
-/deep/ .mat-form-field-infix{
-  width: 130px !important;
+/*/deep/ .mat-form-field-infix{*/
+  /*width: 130px !important;*/
+/*}*/
+.confirm_button{
+  background-color: #e61414;
 }

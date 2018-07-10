@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { Worldcup_confirmComponent } from './worldcup_confirm.component';
 
-describe('R113_confirmComponent', () => {
+describe('GameDrawConfirmComponent', () => {
   let component: Worldcup_confirmComponent;
   let fixture: ComponentFixture<Worldcup_confirmComponent>;
 

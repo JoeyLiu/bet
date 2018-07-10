@@ -3,7 +3,6 @@
   flex-direction: column;
   max-height: 1000px;
   min-width: 400px;
-  background-color: lightslategray;
 }
 
 .mat-table {
@@ -14,3 +13,27 @@
   /*width: 600px !important;*/
 /*}*/
 
+.join_button {
+  background-color: #e61414;
+}
+h2 {
+  /*text-align: center;*/
+  border-bottom-style: solid;
+  border-bottom-color: #e61414;
+  border-bottom-width: 3px;
+}
+.game_filter .mat-input-element{
+  border-style: solid;
+  border-width: 1px;
+  height: 25px;
+  border-color: #acacac;
+}
+
+.game_filter .mat-form-field {
+  margin-left: 20%;
+  margin-right: 20%;
+  width:60%;
+}
+/deep/ .game_filter .mat-form-field-underline {
+  height: 0px !important;
+}

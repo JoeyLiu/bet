@@ -30,4 +30,7 @@ export class R113_confirmComponent implements OnInit {
   onCloseConfirm() {
     this.thisDialogRef.close('Confirm');
   }
+  Cancel() {
+    this.thisDialogRef.close('Cancel');
+  }
 }

@@ -11,6 +11,7 @@ import { PersonComponent} from '../person/person.component';
 export class PersonPublishedComponent implements OnInit {
   dialogResult;
   data;
+  enabled = false;
   constructor(public dialog: MatDialog) { }
 
   ngOnInit() {

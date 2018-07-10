@@ -1,6 +1,6 @@
 /deep/ .person_nav .mat-tab-label {
   min-width: 1px !important;
-  font-size: 8px !important;
+  font-size: 12px !important;
 
   color: black;
   max-width: 50px;
@@ -11,8 +11,14 @@
   height: 26px;
 
 }
+/*/deep/ .person_nav .mat-tab-labels{*/
+  /*margin-left: auto;*/
+  /*margin-right: auto;*/
+  /*width: 80%;*/
+/*}*/
+
 /deep/ .person_nav .mat-tab-header{
-  border-bottom-color: #8B0000;
+  border-bottom-color: #e61414;
   border-bottom-style: none;
   border-bottom-width: 1px;
   width: 60%;
@@ -24,7 +30,7 @@ mat-tab-group{
   margin-right: 5% !important;
 }
 /deep/ .person_nav .mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar{
-  background-color: #8B0000 !important;
+  background-color: #e61414 !important;
   opacity: 1;
 }
 /deep/ .person_nav .mat-tab-label-active{
@@ -34,4 +40,10 @@ mat-tab-group{
 
 /deep/ .person_nav .mat-tab-group.mat-primary .mat-tab-label:not(.mat-tab-disabled):focus, .mat-tab-group.mat-primary .mat-tab-link:not(.mat-tab-disabled):focus, .mat-tab-nav-bar.mat-primary .mat-tab-label:not(.mat-tab-disabled):focus, .mat-tab-nav-bar.mat-primary .mat-tab-link:not(.mat-tab-disabled):focus{
   background-color: white !important;
+}
+h2 {
+  /*text-align: center;*/
+  border-bottom-style: solid;
+  border-bottom-color: #e61414;
+  border-bottom-width: 3px;
 }
