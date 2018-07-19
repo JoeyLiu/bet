@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
   }
   openLoading () {
     this.loadingDialog = this.dialog.open(LoadingComponent, {
-      width: '150px',
+      width: '350px',
       data: '区块链用户验证,请稍候...',
       disableClose: true,
     });

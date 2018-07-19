@@ -20,8 +20,8 @@ export class PublishComponent implements OnInit {
     {value: '11选3', viewValue: '11选3'},
   ];
   matches = [
-    {value: '2018-6-15 23:00', host: '法国', guest: '比利时', id: 1},
-    {value: '2018-6-15 23:00', host: '克罗地亚', guest: '英格兰', id: 2},
+    {value: '2018-6-15 23:00', host: '比利时', guest: '英格兰', id: 1},
+    {value: '2018-6-15 23:00', host: '法国', guest: '克罗地亚', id: 2},
   ];
   matchselected: any;
   constructor(public thisDialogRef: MatDialogRef<PublishComponent>,
@@ -107,7 +107,7 @@ export class PublishComponent implements OnInit {
   }
   openLoading () {
     this.loadingDialog = this.dialog.open(LoadingComponent, {
-      width: '150px',
+      width: '250px',
       data: '努力开盘中...',
       disableClose: true,
     });

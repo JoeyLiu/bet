@@ -112,7 +112,7 @@ h2 {
   /*height: 80px;*/
 }
 /deep/ .wc_game_list .mat-card-header {
-  background-color: #e61414 !important;
+  background-color: #F44336 !important;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
@@ -148,7 +148,7 @@ h2 {
 }
 
 .title {
-  width:12%;
+  width: 12%;
   float: left;
 }
 .txt {

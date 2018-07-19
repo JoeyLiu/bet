@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {MatDialog} from '@angular/material';
+import {MatDialog, MatDialogRef} from '@angular/material';
 import {LoginComponent} from '../login/login.component';
 import { PersonComponent} from '../person/person.component';
+import {PersonProfileComponent} from '../person-profile/person-profile.component';
 
 @Component({
   selector: 'app-person-joined',
@@ -12,10 +13,19 @@ export class PersonJoinedComponent implements OnInit {
   dialogResult;
   data;
   enabled: boolean;
-  constructor(public dialog: MatDialog) { }
+  enable1: boolean;
+  enable2: boolean;
+  enable3: boolean;
+  firstClick: boolean;
+  constructor(public dialog: MatDialog,
+              public thisDialogRef: MatDialogRef<PersonJoinedComponent>) { }
 
   ngOnInit() {
     this.enabled = false;
+    this.enable1 = false;
+    this.enable2 = false;
+    this.enable3 = false;
+    this.firstClick = true;
   }
   openDialog() {
     const dialogRef = this.dialog.open(LoginComponent, {
@@ -37,4 +47,25 @@ export class PersonJoinedComponent implements OnInit {
       this.dialogResult = result;
     });
   }
+  close() {
+    this.thisDialogRef.close();
+  }
+  toggle(index: number){
+    if (this.firstClick) {
+      this.enable1 = true;
+      this.enable2 = true;
+      this.enable3 = true;
+      this.firstClick = false;
+    }
+    if (index === 1) {
+      this.enable1 = !this.enable1;
+    }
+    if (index === 2) {
+      this.enable2 = !this.enable2;
+    }
+    if (index === 3) {
+      this.enable3 = !this.enable3;
+    }
+  }
+
 }

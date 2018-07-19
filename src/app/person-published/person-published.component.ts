@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {MatDialog} from '@angular/material';
+import {MatDialog, MatDialogRef} from '@angular/material';
 import {LoginComponent} from '../login/login.component';
 import { PersonComponent} from '../person/person.component';
+import {PersonJoinedComponent} from '../person-joined/person-joined.component';
 
 @Component({
   selector: 'app-person-published',
@@ -12,7 +13,8 @@ export class PersonPublishedComponent implements OnInit {
   dialogResult;
   data;
   enabled = false;
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog,
+              public thisDialogRef: MatDialogRef<PersonPublishedComponent>) { }
 
   ngOnInit() {
   }
@@ -35,5 +37,8 @@ export class PersonPublishedComponent implements OnInit {
       console.log(`Dialog closed: ${result}`);
       this.dialogResult = result;
     });
+  }
+  close() {
+    this.thisDialogRef.close();
   }
 }

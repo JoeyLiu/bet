@@ -25,6 +25,7 @@ export class RegisterComponent implements OnInit {
   preRegister: boolean;
   userAddr: string;
   loadingDialog: any;
+  reg_userAddr: string;
   constructor(public thisDialogRef: MatDialogRef<LoginComponent>,
               private userService: UserService,
               public snackBar: MatSnackBar,
@@ -134,39 +135,99 @@ export class RegisterComponent implements OnInit {
       });
       done = false;
     }
-    if (this.reg_username === '') {
-        this.snackBar.open('请输入用户名', '', {
+    if((this.reg_pwd === '') && (this.reg_pwd_confirm === '')) {
+      this.snackBar.open('密码不能为空', '', {
         duration: 5000,
         //horizontalPosition: 'left',
         verticalPosition: 'top',
       });
-        done = false;
     }
+    if (this.reg_username === '') {
+      this.snackBar.open('请输入用户名', '', {
+        duration: 5000,
+        //horizontalPosition: 'left',
+        verticalPosition: 'top',
+      });
+      done = false;
+    }
+
+
+
     if (done) {
-      this.register();
+      this.findUserExist();
     }
   }
-  register() {
-    // this.snackBar.open('注册用户中......', '请稍候', {
-    //   //duration: 5000,
-    //   //horizontalPosition: 'left',
-    //   verticalPosition: 'top',
-    // });
-
+  getNewAddr(){
+    $.ajax({
+      url: 'http://47.104.136.172/newuser',
+      instance: this,
+      userSer: this.userService,
+      // username: this.user,
+      // snackBar: this.snackBar,
+      // dialog: this.diag,
+      dataType: 'json',
+      method: 'GET',
+      success: function(data) {
+        if(!data){
+          console.log(data);
+        } else {
+          console.log(data);
+          this.instance.reg_userAddr = data;
+          console.log('获得地址: ' + this.instance.reg_userAddr + ' 继续注册');
+          this.instance.register();
+        }
+      },
+      error: function(xhr) {
+        // 导致出错的原因较多，以后再研究
+        this.instance.closeLoading();
+        this.instance.snackBar.open('网络超时', '请重试', {
+          duration: 2000,
+          //horizontalPosition: 'left',
+          verticalPosition: 'top',
+        });
+        console.log('error:' + JSON.stringify(xhr)); }
+    });
+  }
+  findUserExist() {
     this.openLoading();
+    // http://localhost:9998/user/username?username=super
+    $.ajax({
+      url: this.userService.getApiUrl() + '/user/username?username=' + this.reg_username,
+      usrSvc: this.userService,
+      instance: this,
+      dataType: 'json',
+      method: 'GET',
+      success: function(data) {
+        if (data.username) {
+          this.instance.closeLoading();
+          this.instance.snackBar.open('用户名已存在', '请重试', {
+            duration: 1000,
+            //horizontalPosition: 'left',
+            verticalPosition: 'top',
+          });
+        } else {
+          console.log('用户不存在，继续注册-->从区块链中获取新地址');
+          this.instance.getNewAddr();
+        }
+      },
+      error: function(xhr) {
+        // read again
+        this.instance.snackBar.open('网络超时', '请重试', {
+          duration: 1000,
+          //horizontalPosition: 'left',
+          verticalPosition: 'top',
+        });
+      }
+    });
+  }
+  register() {
     this.myurl = this.apiUrl + '/user/register?username=' + this.reg_username +
       '&password=' + this.reg_pwd +
-      '&phone=' + this.reg_phone;
+      '&phone=' + this.reg_phone + '&address=' + this.reg_userAddr;
     $.ajax({
       url: this.myurl,
-      suc: this.preRegister,
       instance: this,
-      pwd: this.reg_pwd,
-      snackBar: this.snackBar,
-      address: this.userAddress,
       userSvc: this.userService,
-      diag: this.thisDialogRef,
-      user: this.reg_username,
       dataType: 'json',
       method: 'POST',
       success: function(data) {
@@ -174,7 +235,7 @@ export class RegisterComponent implements OnInit {
           this.instance.closeLoading();
           console.log(data.msg);
           //alert(data.msg);
-          this.snackBar.open(data.msg, '请重试', {
+          this.instance.snackBar.open(data.msg, '请重试', {
             duration: 5000,
             //horizontalPosition: 'left',
             verticalPosition: 'top',
@@ -186,83 +247,17 @@ export class RegisterComponent implements OnInit {
           this.userSvc.setUsername(data.username);
           this.userSvc.setEmail(data.email);
           this.userSvc.setPhone(data.phone);
-          this.diag.close();
-          //this.bcS.newUser(this.pwd);
-          $.ajax({
-            url: 'http://47.104.136.172/newuser',
-            instance: this.instance,
-            userSer: this.userSvc,
-            username: this.user,
-            snackBar: this.snackBar,
-            dialog: this.diag,
-            dataType: 'json',
-            method: 'GET',
-            success: function(data) {
-              if(!data){
-                console.log(data);
-                //console.log(this.succeed);
-                //alert(data);
-                //this.suc = false;
-              } else {
-                console.log(data);
-                this.url = this.instance.apiUrl + '/user/updateAddress?username=' + this.username +
-                  '&address=' + data;
-                $.ajax({
-
-                  url: this.url,
-                  userSvc: this.userSer,
-                  instance: this.instance,
-                  diag: this.dialog,
-                  snackBar: this.snackBar,
-                  dataType: 'json',
-                  method: 'POST',
-                  success: function(data_update) {
-                    if(data_update.msg){
-                      console.log(data_update.msg);
-                      //console.log(this.succeed);
-                      alert(data_update.msg);
-                      //this.suc = false;
-                    } else {
-                      console.log('User address is updated: ' + data_update);
-                      console.log(data_update);
-
-                      this.userSvc.setUserAddress(data_update.useraddress);
-                      this.instance.closeLoading();
-                      this.instance.cookieSvc.put('username', data_update.username);
-                      console.log('注册后更新cookie：' + this.instance.cookieSvc.get('username'));
-                      this.snackBar.open('注册成功', '登陆中', {
-                        duration: 1000,
-                        //horizontalPosition: 'left',
-                        verticalPosition: 'top',
-                      });
-                      this.instance.PostToTransfer(data_update.useraddress);
-                      //alert('注册成功');
-                      console.log(this.userSvc.getLoginStatus());
-                      console.log(this.userSvc.getUserAddress());
-                    }
-                  },
-                  error: function(xhr) {
-                    // 导致出错的原因较多，以后再研究
-                    this.instance.closeLoading();
-                    this.instance.snackBar.open('网络超时', '请重试', {
-                      duration: 2000,
-                      //horizontalPosition: 'left',
-                      verticalPosition: 'top',
-                    });
-                    console.log('error:' + JSON.stringify(xhr)); }
-                });
-              }
-            },
-            error: function(xhr) {
-              // 导致出错的原因较多，以后再研究
-              this.instance.closeLoading();
-              this.instance.snackBar.open('网络超时', '请重试', {
-                duration: 2000,
-                //horizontalPosition: 'left',
-                verticalPosition: 'top',
-              });
-              console.log('error:' + JSON.stringify(xhr)); }
+          this.userSvc.setUserAddress(data.useraddress);
+          this.instance.thisDialogRef.close();
+          this.instance.closeLoading();
+          this.instance.cookieSvc.put('username', data.username);
+          console.log('注册后更新cookie：' + this.instance.cookieSvc.get('username'));
+          this.instance.snackBar.open('注册成功', '登陆中', {
+            duration: 1000,
+            //horizontalPosition: 'left',
+            verticalPosition: 'top',
           });
+          this.instance.PostToTransfer(data.useraddress);
         }
       },
       error: function(xhr) {
@@ -278,7 +273,7 @@ export class RegisterComponent implements OnInit {
   }
   openLoading () {
     this.loadingDialog = this.dialog.open(LoadingComponent, {
-      width: '150px',
+      width: '350px',
       data: '新区块链用户注册中',
       disableClose: true,
     });

@@ -8,6 +8,7 @@ import {LoadingComponent} from '../loading/loading.component';
 import {ChargeComponent} from '../Charge/Charge.component';
 import {HelpComponent} from '../Help/Help.component';
 import { CookieService } from 'ngx-cookie';
+import {TransferComponent} from '../transfer/transfer.component';
 declare var $: any;
 
 @Component({
@@ -32,6 +33,7 @@ export class Nav1Component implements OnInit {
               private _cookieService: CookieService) { }
 
   ngOnInit() {
+
     console.log('document width: ' + document.body.clientWidth);
     this.chainUrl = this.userService.getChainUrl();
     this.apiUrl = this.userService.getApiUrl();
@@ -93,7 +95,7 @@ export class Nav1Component implements OnInit {
   }
   openLoading () {
     this.loadingDialog = this.dialog.open(LoadingComponent, {
-      width: '150px',
+      width: '250px',
       data: '加载区块链...',
       disableClose: true,
     });
@@ -267,8 +269,8 @@ export class Nav1Component implements OnInit {
     });
   }
   openPersonDialog(option: number) {
-    let height = '80%';
-    let width = '80%';
+    let height = '100%';
+    let width = '100%';
     if (option === 0) {
       height = '440px';
       width = '300px';

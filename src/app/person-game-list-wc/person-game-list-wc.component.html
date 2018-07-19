@@ -35,7 +35,7 @@
             <mat-list-item role="listitem" class="list">
               <div class="left">奖金</div>
               <div class="right" *ngIf="game[8] === '3'">--</div>
-              <div class="right" *ngIf="game[8] != '3'">{{game[11]}}</div>
+              <div class="right" *ngIf="game[8] != '3'">{{game[11] / 100000000}}</div>
             </mat-list-item>
 
           </mat-list>

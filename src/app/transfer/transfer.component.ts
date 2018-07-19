@@ -136,7 +136,7 @@ export class TransferComponent implements OnInit {
   }
   openLoading () {
     this.loadingDialog = this.dialog.open(LoadingComponent, {
-      width: '150px',
+      width: '250px',
       data: '转账中，请稍候...',
       disableClose: true,
     });

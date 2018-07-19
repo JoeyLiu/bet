@@ -26,6 +26,7 @@ export class NavComponent implements OnInit {
 
   ngOnInit() {
     this.chainUrl = this.usrSvc.getChainUrl();
+    // this.openLoading();
   }
   Login() {
     this.loginDialog = this.dialog.open(LoginComponent, {
@@ -42,7 +43,7 @@ export class NavComponent implements OnInit {
   }
   openLoading () {
     this.loadingDialog = this.dialog.open(LoadingComponent, {
-      width: '150px',
+      width: '250px',
       data: '加载区块链...',
       disableClose: true,
     });

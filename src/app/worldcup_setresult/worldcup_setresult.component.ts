@@ -31,7 +31,7 @@ export class Worldcup_setresultComponent implements OnInit {
   }
   openLoading () {
     this.loadingDialog = this.dialog.open(LoadingComponent, {
-      width: '150px',
+      width: '250px',
       data: '正在开奖,请稍候...',
       disableClose: true,
     });
@@ -81,7 +81,8 @@ export class Worldcup_setresultComponent implements OnInit {
         }
       },
       error: function(xhr) {
-        console.log('投注错误:' + JSON.stringify(xhr));
+        console.log('开奖出错:' + JSON.stringify(xhr));
+        this.instance.closeLoading();
         this.instance.snackBar.open('网络超时', '请重试', {
           duration: 2000,
           //horizontalPosition: 'left',

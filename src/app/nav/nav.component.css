@@ -56,3 +56,8 @@ app-nav .nav{
     margin-right: 0px !important;
   }
 }
+
+/deep/ app-nav .nav .mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar{
+  /*background-color: #e61414 !important;*/
+  opacity: 0;
+}

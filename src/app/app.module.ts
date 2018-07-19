@@ -134,6 +134,7 @@ import {HelpComponent} from './Help/Help.component';
     MatSnackBarModule,
     MatListModule,
     CookieModule.forRoot(),
+    MatButtonToggleModule,
   ],
   providers: [
     UserService,

@@ -21,7 +21,7 @@
   <div class="wc_game_list" *ngIf="selected">
     <div *ngFor="let game of games" class="game_card">
 
-      <mat-card class="example-card" *ngIf="game[6] === matches[selected-1].host && game[8] === '3'">
+      <mat-card class="example-card" *ngIf="game[6] === matches[selected-1].host && game[7] === matches[selected-1].guest && game[8] === '3'">
         <mat-card-header>
 
           <mat-card-title>

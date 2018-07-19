@@ -36,8 +36,8 @@ export class IndexComponent implements OnInit {
   }
   openLoading () {
     this.loadingDialog = this.dialog.open(LoadingComponent, {
-      width: '150px',
-      data: '加载全部游戏信息...',
+      width: '250px',
+      data: '加载区块链...',
       disableClose: true,
     });
     this.loadingDialog.afterClosed().subscribe(result => {

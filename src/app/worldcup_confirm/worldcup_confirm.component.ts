@@ -87,7 +87,7 @@ export class Worldcup_confirmComponent implements OnInit {
   }
   openLoading () {
     this.loadingDialog = this.dialog.open(LoadingComponent, {
-      width: '150px',
+      width: '250px',
       data: '努力投注中...',
       disableClose: true,
     });
